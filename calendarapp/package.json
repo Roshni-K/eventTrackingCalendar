@@ -1,5 +1,5 @@
 {
-  "name": "github-battle",
+  "name": "react-calendar-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,6 +18,10 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
+    "fullcalendar": "^3.4.0",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "moment": "^2.18.1",
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
   },
