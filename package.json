@@ -1,0 +1,19 @@
+{
+  "name": "q",
+  "version": "1.0.0",
+  "description": "Calendar App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roshni312/eventTrackingCalendar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roshni312/eventTrackingCalendar/issues"
+  },
+  "homepage": "https://github.com/roshni312/eventTrackingCalendar#readme"
+}
