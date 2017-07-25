@@ -1,2 +1,0 @@
-# eventTrackingCalendar
-Calendar App
