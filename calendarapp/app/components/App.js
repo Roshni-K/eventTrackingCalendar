@@ -4,9 +4,68 @@ import Calendar from './Calendar.js';
 //var Popular = require('./Popular');
 
 class App extends React.Component {
+  
   render() {
+    let header= {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+      }
+     const events= [
+				{
+					title: 'Meetup',
+					start: '2017-08-03T13:00:00',
+					constraint: 'availableForMeeting'
+				},
+				{
+					title: 'Meeting',
+					start: '2017-08-13T11:00:00',
+					constraint: 'availableForMeeting', // defined below
+					color: '#257e4a'
+				},
+				{
+					title: 'Conference',
+					start: '2017-08-18',
+					end: '2017-08-20'
+				},
+				{
+					title: 'Party',
+					start: '2017-08-29T20:00:00'
+				},
+				// areas where "Meeting" must be dropped
+				{
+					id: 'availableForMeeting',
+					start: '2017-08-11T10:00:00',
+					end: '2017-08-11T16:00:00',
+					rendering: 'background'
+				},
+				{
+					id: 'availableForMeeting',
+					start: '2017-08-13T10:00:00',
+					end: '2017-08-13T16:00:00',
+					rendering: 'background'
+				},
+				// red areas where no events can be dropped
+				{
+					start: '2017-08-24',
+					end: '2017-08-28',
+					overlap: false,
+					rendering: 'background',
+					color: '#ff9f89'
+				},
+				{
+					start: '2017-08-06',
+					end: '2017-08-08',
+					overlap: false,
+					rendering: 'background',
+					color: '#ff9f89'
+				}
+			] 
     return <div>
-      <Calendar /></div>;
+      <Calendar 
+      header={header}
+      events = {events}
+      /></div>;
   }
 }
 
