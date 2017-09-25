@@ -4,44 +4,47 @@ import $ from 'jquery';
 import css from '../../node_modules/fullcalendar/dist/fullcalendar.css';
 
 class Calendar extends React.Component {
-  
-  componentDidMount() {
-		const {calendar} = this.refs;
-    $(calendar).fullCalendar({
-			header: this.props.header,
-			editable: true,
-			selectable: true,
-			selectHelper: true,
-			editable: true,
-			eventLimit: true,
-			events: this.props.events,
-			select: function(start, end) {
-				var title = prompt('Event Title:');
-				var eventData;
-				if (title) {
-					eventData = {
-						title: title,
-						start: start,
-						end: end
-					};
-					$(calendar).fullCalendar('renderEvent', eventData, true); // stick? = true
-				}
-				$(calendar).fullCalendar('unselect');
-			},
-			 // allow "more" link when too many events
-			
-			// drop: function() {
-			// 	// is the "remove after drop" checkbox checked?
-			// 	if ($('#drop-remove').is(':checked')) {
-			// 		// if so, remove the element from the "Draggable Events" list
-			// 		$(this).remove();
-			// 	}
-			// }
-    })
+	constructor(props) {
+		super(props);
+		this.state = {
+
+		}
+		this.addEvent = this.addEvent.bind(this);
 	}
-render() {
-    return <div ref="calendar"></div>;
-  }
+
+	componentDidMount() {
+		this.addEvent(this.props);
+	}
+	shouldComponentUpdate(nextProps) {
+		if (this.props !== nextProps) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	componentWillUpdate(nextProps) {
+		this.addEvent(nextProps);
+	}
+	componentWillUnmount() {
+		const { calendar } = this.refs;
+		$(calendar).fullCalendar('destroy');
+	}
+	addEvent(props) {
+		const { calendar } = this.refs;
+		$(calendar).fullCalendar('destroy');
+		$(calendar).fullCalendar({
+			header: props.header,
+			editable: props.editable,
+			selectable: props.selectable,
+			selectHelper: props.selectHelper,
+			eventLimit: props.eventLimit,
+			events: props.events,
+			select: props.select
+		});
+	}
+	render() {
+		return <div ref="calendar"></div>;
+	}
 }
 
 module.exports = Calendar;
